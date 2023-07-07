@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class PostModel {
     private String url;
-    private int paramCount;
     private List<Params> paramsList;
+    private List<Params> headerList;
     private JSONObject body;
 }
