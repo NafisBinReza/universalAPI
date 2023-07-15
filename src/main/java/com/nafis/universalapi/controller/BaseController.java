@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/common")
 public class BaseController {
@@ -25,12 +27,18 @@ public class BaseController {
     }
 
     @PostMapping("/postAPI")
-    public ResponseEntity<Object> postAPI(@RequestBody PostModel postModel){
+    public ResponseEntity<Object> postAPI(@RequestBody PostModel postModel) throws IOException {
         return new ResponseEntity<>(postService.post(postModel), HttpStatus.OK);
     }
 
     @PostMapping("/tester")
-    public ResponseEntity<Object> testerAPI(){
+    public ResponseEntity<Object> testerAPI(
+            @RequestBody String requestBody,
+            @RequestParam("param1") String param1,
+            @RequestParam("param2") String param2,
+            @RequestHeader("authorization") String authorizationHeader,
+            @RequestHeader("title") String title
+    ){
         return new ResponseEntity<>(testerService.testPost(), HttpStatus.OK);
     }
 

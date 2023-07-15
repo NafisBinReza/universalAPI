@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class TesterService {
 
-    public Object testPost(){
-        return new Object();
+    public String testPost(){
+        return "Test Successful";
     }
 
 
