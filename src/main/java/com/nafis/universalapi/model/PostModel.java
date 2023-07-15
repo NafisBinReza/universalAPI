@@ -1,5 +1,6 @@
 package com.nafis.universalapi.model;
 
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.nafis.universalapi.model.common.Params;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +9,7 @@ import lombok.Setter;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -17,5 +19,6 @@ public class PostModel {
     private String url;
     private List<Params> paramsList;
     private List<Params> headerList;
-    private JSONObject body;
+    @JsonAnySetter
+    private Map<String, Object> body;
 }
