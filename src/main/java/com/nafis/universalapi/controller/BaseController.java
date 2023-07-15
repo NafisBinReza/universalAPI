@@ -27,8 +27,8 @@ public class BaseController {
     }
 
     @PostMapping("/postAPI")
-    public ResponseEntity<Object> postAPI(@RequestBody PostModel postModel) throws IOException {
-        return new ResponseEntity<>(postService.post(postModel), HttpStatus.OK);
+    public ResponseEntity<Object> postAPI(@RequestBody PostModel postModel, @RequestHeader("key") String key) throws IOException {
+        return new ResponseEntity<>(postService.post(postModel, key), HttpStatus.OK);
     }
 
     @PostMapping("/tester")
@@ -40,6 +40,11 @@ public class BaseController {
             @RequestHeader("title") String title
     ){
         return new ResponseEntity<>(testerService.testPost(), HttpStatus.OK);
+    }
+
+    @PostMapping("/testResUpdate")
+    public ResponseEntity<Object> testResponseUpdateAPI(@RequestBody String requestBody){
+        return new ResponseEntity<Object>(testerService.updateTestResponse(requestBody), HttpStatus.OK);
     }
 
 }
